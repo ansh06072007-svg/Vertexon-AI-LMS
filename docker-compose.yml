@@ -1,0 +1,21 @@
+# Optional local container for the zero-Docker demo.
+# This intentionally runs the SQLite-backed app only. The PRD's production
+# topology (Postgres + pgvector, Redis, MinIO/S3, separate AI service) is
+# documented in docs/PRD-COVERAGE.md as a migration path, not faked here.
+services:
+  vertexon:
+    build: .
+    ports:
+      - "5174:5174"
+    environment:
+      NODE_ENV: production
+      PORT: 5174
+      HOST: 0.0.0.0
+    volumes:
+      - vertexon-data:/app/server/data
+      - vertexon-uploads:/app/uploads
+    restart: unless-stopped
+
+volumes:
+  vertexon-data:
+  vertexon-uploads:
