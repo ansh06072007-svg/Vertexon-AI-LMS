@@ -242,11 +242,13 @@ Vertexon-AI-LMS/
 ├── docker-compose.yml
 ├── .dockerignore
 ├── .env.example
+├── .node-version
 ├── .github/workflows/ci.yml
 ├── docs/
 │   ├── ARCHITECTURE.md
 │   ├── COMPLIANCE.md
-│   └── PRD-COVERAGE.md
+│   ├── PRD-COVERAGE.md
+│   └── RENDER.md
 ├── src/
 │   ├── App.tsx                 # route map + role guards
 │   ├── context/AuthContext.tsx # user session state
@@ -286,6 +288,10 @@ docker compose up --build
 Open **http://127.0.0.1:5174**.
 
 The compose file intentionally runs only the SQLite-backed app. It does not pretend to provide the PRD's Postgres, Redis, or MinIO topology; that migration path is documented in `docs/PRD-COVERAGE.md`.
+
+### Render
+
+**No AI API key is required.** The AI tutor uses local retrieval, not Gemini/OpenAI/Anthropic. For exact Render build, start, environment-variable, and persistent-disk settings, see `docs/RENDER.md`.
 
 ---
 

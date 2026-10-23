@@ -6,10 +6,10 @@
   "scripts": {
     "dev": "concurrently -k -n api,web -c magenta,cyan \"npm:dev:server\" \"npm:dev:web\"",
     "dev:web": "vite",
-    "dev:server": "node --disable-warning=ExperimentalWarning --watch server/index.mjs",
+    "dev:server": "node --env-file-if-exists=.env --disable-warning=ExperimentalWarning --watch server/index.mjs",
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
-    "start": "node --disable-warning=ExperimentalWarning server/index.mjs",
+    "start": "node --env-file-if-exists=.env --disable-warning=ExperimentalWarning server/index.mjs",
     "preview": "vite preview",
     "db:reset": "node server/reset.mjs",
     "test:api": "node tests/api-smoke.mjs"
@@ -36,5 +36,8 @@
     "tailwindcss": "^3.4.17",
     "typescript": "~5.6.3",
     "vite": "^6.0.5"
+  },
+  "engines": {
+    "node": ">=24.0.0"
   }
 }

@@ -6,7 +6,7 @@ import { schema } from './schema.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 export const dataDir = join(here, 'data');
-export const uploadsDir = join(here, 'uploads');
+export const uploadsDir = process.env.UPLOAD_DIR || join(here, 'uploads');
 mkdirSync(dataDir, { recursive: true });
 mkdirSync(uploadsDir, { recursive: true });
 
